@@ -2,8 +2,23 @@
 import './style.css'
 
 export default function Carro({carro, setCarro}){
-    const remove = id => setCarro(carro.filter(produto => produto.idCarro!==id))
-    
+    const remove = id => setCarro(carro.filter(produto => produto.id!==id))
+    const addOrRemove = (operacao, produto) =>{
+        if(operacao === '-'){
+            setCarro(carro.map(car=> {
+                if(car.id === produto.id) car.quantidade-=1
+                return car
+            }))
+            if(produto.quantidade < 1){
+                remove(produto.id)
+            }
+        }else{ 
+            setCarro(carro.map(car=> {
+                if(car.id === produto.id) car.quantidade+=1
+                return car
+            }))
+        }
+    }
     return <div className='carrinho'>
         <h1>Carrinho de Compras</h1>
         {carro.length>0 ? 
@@ -11,16 +26,17 @@ export default function Carro({carro, setCarro}){
                 <ul>
                     {
                         carro.map(produto=>
-                            <li key={produto.idCarro}>
+                            <li key={produto.id}>
                                 <figure>
                                     <img src={produto.img}/>
                                 </figure>
                                 <div className='info'>
                                     <h4>{produto.name}</h4>
                                     <p>{produto.category}</p>
+                                    <p><button onClick={()=>addOrRemove('-', produto)}>-</button>{produto.quantidade}<button onClick={()=>addOrRemove('+', produto)}>+</button></p>
                                 </div>
                                 <div className='remover'>
-                                    <button onClick={()=>remove(produto.idCarro)}>Remover</button>
+                                    <button onClick={()=>remove(produto.id)}>Remover</button>
                                 </div>
                             </li>
                         )

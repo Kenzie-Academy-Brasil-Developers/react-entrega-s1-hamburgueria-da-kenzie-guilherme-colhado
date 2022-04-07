@@ -1,7 +1,7 @@
 import './Global.css'
 import './App.css';
 import Produtos from './produtos.json'
-import {useState} from 'react'
+import { useState } from 'react'
 import Pesquisa from './components/Pesquisa';
 import ListaProdutos from './components/ListaProdutos';
 import Carro from './components/Carro';

@@ -1,12 +1,17 @@
 import './style.css'
-import { useState } from 'react'
 
 export default function ListaProdutos({listaProdutos, carro, setCarro}){
-    const [idCarro, setIdCarro] = useState(1)
+    const filtra = (id) => carro.filter(car=>car.id === id)
     function addAoCarro(produto){
-        const produtoCarro = {idCarro,...produto}
-        setCarro([...carro, produtoCarro])
-        setIdCarro(previusIdCarro => previusIdCarro+1)
+        if(filtra(produto.id).length===0 || carro.length===0){
+            const produtoCarro = {...produto, quantidade:1}
+            setCarro([...carro, produtoCarro])
+        }else{
+            setCarro(carro.map(car=> {
+                if(car.id === produto.id) car.quantidade+=1
+                return car
+            }))
+        }
     }
     return <div className='produtos'>
         {listaProdutos.map(produto => <div key={produto.id}>
