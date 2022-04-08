@@ -8,7 +8,9 @@ export default function ListaProdutos({listaProdutos, carro, setCarro}){
             setCarro([...carro, produtoCarro])
         }else{
             setCarro(carro.map(car=> {
-                if(car.id === produto.id) car.quantidade+=1
+                if(car.id === produto.id) {
+                    car.quantidade+=1
+                }
                 return car
             }))
         }
