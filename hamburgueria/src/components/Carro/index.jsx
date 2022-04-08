@@ -44,7 +44,7 @@ export default function Carro({carro, setCarro}){
                 </ul>
                 <div className='total'>
                     <h3>Total</h3>
-                    <h4>{'R$'} {`${carro.reduce((a,b)=>a+b.price,0).toFixed(2)}`.replace('.',',')}</h4>
+                    <h4>{'R$'} {`${carro.reduce((a,b)=>a+b.price*b.quantidade,0).toFixed(2)}`.replace('.',',')}</h4>
                 </div>
                 <button onClick={()=>setCarro([])}>Remover Todos</button>
             </div> 

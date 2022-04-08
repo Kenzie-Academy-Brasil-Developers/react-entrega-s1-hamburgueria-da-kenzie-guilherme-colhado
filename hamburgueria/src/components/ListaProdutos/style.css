@@ -20,6 +20,14 @@
     border: 2px solid var(--grey-20);
     box-shadow: 2px 2px 10px var(--grey-100) -2px -2px 10px var(--grey-100);
     border-radius: 5px;
+    transition: all .5s ease-in;
+    z-index: 100;
+}
+
+.produtos > div:hover{
+    border-color:  var(--color-primary);
+    box-shadow: 2px 2px 10px var(--color-primary) -2px -2px 10px var(--color-primary);
+    transform: scale(1.1);
 }
 
 .produtos figure{
@@ -27,6 +35,11 @@
     height: 150px;
     display: flex;
     justify-content: center;
+    transition: all .5s ease-in;
+}
+
+.produtos > div:hover figure{
+    background-color: var(--color-primary-50);
 }
 
 .produtos .info{
