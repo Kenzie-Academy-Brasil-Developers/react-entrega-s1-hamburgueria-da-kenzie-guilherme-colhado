@@ -4,15 +4,7 @@ export default function ListaProdutos({listaProdutos, carro, setCarro}){
     const filtra = (id) => carro.filter(car=>car.id === id)
     function addAoCarro(produto){
         if(filtra(produto.id).length===0 || carro.length===0){
-            const produtoCarro = {...produto, quantidade:1}
-            setCarro([...carro, produtoCarro])
-        }else{
-            setCarro(carro.map(car=> {
-                if(car.id === produto.id) {
-                    car.quantidade+=1
-                }
-                return car
-            }))
+            setCarro([...carro, produto])
         }
     }
     return <div className='produtos'>
